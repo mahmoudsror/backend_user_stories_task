@@ -17,7 +17,10 @@ services:
       - db
     volumes:
       - .:/app/
+    depends_on: 
+      - db
     network_mode: bridge
+    restart: on-failure
   db:
     image: mysql:5.6
     environment:
