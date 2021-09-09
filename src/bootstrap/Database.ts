@@ -1,8 +1,9 @@
 import 'reflect-metadata';
-import { createConnection, Connection } from 'typeorm';
+import { createConnection } from 'typeorm';
 import Environment from './Environment';
 import { Users } from '../entities/Users';
 import { Tasks } from '../entities/Tasks';
+import { TasksHistory } from '../entities/TasksHistory';
 export class Database {
 
     constructor() { }
@@ -16,7 +17,7 @@ export class Database {
             password: dbPassword,
             database: dbName,
             synchronize: true,
-            entities: [Users, Tasks],
+            entities: [Users, Tasks, TasksHistory],
         } as any)
             .then(() => {
                 console.log('info', `Connection to MySQL server established on port ${dbPort as string}`);

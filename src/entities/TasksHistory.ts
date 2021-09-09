@@ -4,8 +4,6 @@ import {
     BaseEntity,
     CreateDateColumn,
     UpdateDateColumn,
-    ManyToMany,
-    JoinTable,
     Column,
     ManyToOne
 } from "typeorm";

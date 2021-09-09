@@ -2,11 +2,11 @@ import Server from "./Server";
 import { Database } from "./Database";
 export default class Bootstrap {
 
-    public static initServer(){
+    public static initServer() {
         Server.init();
     }
 
-    public static initDatabase(){
+    public static initDatabase() {
         Database.connect();
     }
 }

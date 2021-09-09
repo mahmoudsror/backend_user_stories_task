@@ -24,8 +24,8 @@ export class Tasks extends BaseEntity {
     @Column("text")
     description: string;
 
-    @Column()
-    status: string;
+    @Column("varchar")
+    status: string="todo";
 
     @Column()
     createdBy: number;
