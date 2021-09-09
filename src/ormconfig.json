@@ -1,0 +1,18 @@
+{
+   "type": "mysql",
+   "host": "db",
+   "port": 3306,
+   "username": "root",
+   "password": "root",
+   "database": "tasks",
+   "synchronize": true,
+   "logging": false,
+   "migrations": [
+      "migration/*.ts"
+   ],
+   "entities": ["entities/*.ts"],
+   "cli": {
+      "migrationsDir": "./migration",
+      "entitiesDir": "./entities"
+   }
+}
