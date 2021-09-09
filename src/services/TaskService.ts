@@ -16,11 +16,15 @@ export class TaskSerivce {
      * @param  {ITaskPayload} taskInfo
      */
     public async createTask(taskInfo:ITaskPayload){
-       const result:ITask =  await this.tasksRepo.save(taskInfo);
-       const historyObject = this.prepareTaskHistory(result);
-       await this.taskHistoryRepo.save(historyObject)
-
-       return result;
+        try {
+            const result:ITask =  await this.tasksRepo.save(taskInfo);
+            const historyObject = this.prepareTaskHistory(result);
+            await this.taskHistoryRepo.save(historyObject)
+     
+            return result;
+        } catch (error) {
+            throw error;
+        }
     }
     /**
      * @param  {ITask} taskInfo
@@ -28,7 +32,7 @@ export class TaskSerivce {
     private prepareTaskHistory(taskInfo:ITask){
         return {
             task: taskInfo.id,
-            user: 1,
+            user: taskInfo.id, // temp value for user id just in develop 
             status:taskInfo.status,
             action: 'create',
         }

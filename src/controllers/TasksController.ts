@@ -8,12 +8,17 @@ export class TasksController {
      */
     public async create(request: Request, response: Response) {
 
-        const container: Container = createContainer();
-        const taskService = container.taskService;
-        const req = request.body;
-        const result:ITask = await taskService.createTask(req);
-
-        return response.send({ status: 200, result });
+        try {
+            const container: Container = createContainer();
+            const taskService = container.taskService;
+            const req = request.body;
+            const result:ITask = await taskService.createTask(req);
+    
+            return response.send({ status: 200, result });
+        } catch (error) {
+            console.log("error", error)
+           return response.status(500).send({status:500, message:"internal server error"}) 
+        }
     }
     public list() {
 

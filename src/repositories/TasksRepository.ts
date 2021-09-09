@@ -9,12 +9,16 @@ export default class TasksRepository {
    * @returns Promise
    */
   public async save(taskInfo: IUserPayload): Promise<ITask> {
-    const taskRepository = getRepository(Tasks);
-    const task = new Tasks();
-    const createdTask: ITask = await taskRepository.save({
-      ...task,
-      ...taskInfo,
-    });
-    return createdTask;
+    try {
+      const taskRepository = getRepository(Tasks);
+      const task = new Tasks();
+      const createdTask: ITask = await taskRepository.save({
+        ...task,
+        ...taskInfo,
+      });
+      return createdTask;
+    } catch (error) {
+      throw error;
+    }
   }
 }

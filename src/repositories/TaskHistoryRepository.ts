@@ -7,11 +7,15 @@ export default class TaskHistoryRepository {
    * @param  {ITaskHistory} history
    */
   public async save(history: ITaskHistory) {
-    const taskHistoryRepository = getRepository(TasksHistory);
-    const taskHistory = new TasksHistory();
-    return taskHistoryRepository.save({
-      ...taskHistory,
-      ...history,
-    });
+    try {
+      const taskHistoryRepository = getRepository(TasksHistory);
+      const taskHistory = new TasksHistory();
+      return await taskHistoryRepository.save({
+        ...taskHistory,
+        ...history,
+      });  
+    } catch (error) {
+       throw error;
+    }
   }
 }
