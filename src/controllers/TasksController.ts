@@ -11,8 +11,8 @@ export class TasksController {
         try {
             const container: Container = createContainer();
             const taskService = container.taskService;
-            const req = request.body;
-            const result:ITask = await taskService.createTask(req);
+            const body = request.body;
+            const result:ITask = await taskService.createTask(body);
     
             return response.send({ status: 200, result });
         } catch (error) {

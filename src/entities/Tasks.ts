@@ -27,10 +27,11 @@ export class Tasks extends BaseEntity {
     @Column("varchar")
     status: string="todo";
 
-    @Column('increment')
+    @Column()
     createdBy: number;
-    @ManyToOne(() => Users,(Users) => Users.id)
-    @JoinColumn({ name: "createdBy" })
+
+    @ManyToOne(() => Users,(user) => user.tasks)
+
 
     @Column()
     assignee: number;

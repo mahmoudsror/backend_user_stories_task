@@ -18,6 +18,7 @@ export default class TasksRepository {
       });
       return createdTask;
     } catch (error) {
+      console.log("create task Error : ", error)
       throw error;
     }
   }

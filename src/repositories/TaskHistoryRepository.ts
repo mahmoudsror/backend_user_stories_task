@@ -15,6 +15,7 @@ export default class TaskHistoryRepository {
         ...history,
       });  
     } catch (error) {
+      console.log("History error : ", error)
        throw error;
     }
   }

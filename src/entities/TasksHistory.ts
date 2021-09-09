@@ -26,7 +26,7 @@ export class TasksHistory extends BaseEntity {
     user: Users;
     
     @ManyToOne(() => Tasks, (task:any) => task.id)
-    task: Users;
+    task: Tasks;
 
     @CreateDateColumn()
     createdAt: Date;
