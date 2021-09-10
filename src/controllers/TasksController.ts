@@ -16,12 +16,50 @@ export class TasksController {
     
             return response.send({ status: 200, result });
         } catch (error) {
-            console.log("error", error)
-           return response.status(500).send({status:500, message:"internal server error"}) 
+           return response.status(500).send({
+               status:500,
+               message:"internal server error"
+            });
         }
     }
-    public list() {
 
+    /**
+     * @param  {Request} request
+     * @param  {Response} response
+     */
+    public async changeStatus(request: Request, response: Response){
+        try {
+            const taskId = request.params.id;
+            const {status} = request.body||'';
+            const container: Container = createContainer();
+            const taskService = container.taskService;
+            const updatedTask = await taskService.changeStatus(taskId,status );
+            return response.status(200).send(updatedTask)
+        } catch (error) {
+            return response.status(500).send({
+                status: 500,
+                message: 'Failed to update task status'
+            })
+        }
     }
 
+        /**
+     * @param  {Request} request
+     * @param  {Response} response
+     */
+         public async assign(request: Request, response: Response){
+            try {
+                const taskId = request.params.id;
+                const {assignee} = request.body||'';
+                const container: Container = createContainer();
+                const taskService = container.taskService;
+                const updatedTask = await taskService.assign(taskId,assignee );
+                return response.status(200).send(updatedTask)
+            } catch (error) {
+                return response.status(500).send({
+                    status: 500,
+                    message: 'Failed to update task status'
+                })
+            }
+        }
 }

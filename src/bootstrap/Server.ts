@@ -18,6 +18,7 @@ class Server {
 
             this.app.use(express.json());
             Routes.loadTasksRoutes(this.app);
+            Routes.loadUsersRoutes(this.app);
             this.app.use(
                 "/docs",
                 swaggerUi.serve,
