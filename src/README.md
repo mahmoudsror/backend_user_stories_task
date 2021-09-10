@@ -10,3 +10,4 @@ $ cp .env.example .env
 $ docker-compose up -d --build
 
 ```
+You can check API docs through this link : [a link](http://localhost:3000/docs/)
