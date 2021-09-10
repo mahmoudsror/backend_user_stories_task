@@ -2,6 +2,7 @@ import * as express from 'express';
 import Environment from './Environment';
 import Routes from './Routes';
 import swaggerUi from "swagger-ui-express";
+import * as swaggerDocument from '../docs/swagger.json';
 class Server {
 
     public app: express.Application;
@@ -22,11 +23,7 @@ class Server {
             this.app.use(
                 "/docs",
                 swaggerUi.serve,
-                swaggerUi.setup(undefined, {
-                  swaggerOptions: {
-                    url: "/swagger.json",
-                  },
-                })
+                swaggerUi.setup(swaggerDocument)
               );
             console.log(`Server started on port ${port}`);
         });
